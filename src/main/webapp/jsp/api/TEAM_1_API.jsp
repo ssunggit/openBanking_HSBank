@@ -9,7 +9,7 @@
 <body>
 	<button id="ajaxButton">J_INVESTMENT_BANK API 검색</button>
 	
-	<div id="ajaxList"></div>
+	<div id="ajaxList">------------------------------------------------</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
