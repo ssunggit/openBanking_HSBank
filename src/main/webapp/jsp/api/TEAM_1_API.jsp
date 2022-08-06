@@ -20,7 +20,7 @@
 				,url:'http://129.154.207.113:8080/openAPI/J_INVESTMENT_BANK'
 				,data:{
 					bankCode:"20"
-					,phoneNumber:"01041215153"
+					,phoneNumber:"01010041004"
 					,tokenId:"z3i8i4v4j4a1"
 				},datetype:'jsonp'
 				,success:callback

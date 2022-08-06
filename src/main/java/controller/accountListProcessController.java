@@ -20,7 +20,14 @@ public class accountListProcessController implements Controller {
 		
 		AccountService service = new AccountService();
 		List<AccountVO> accountList = service.userAcocuntAll(id);
+		List<AccountVO> accountListJYP = service.userAcocuntAllJYP(id);
+		List<AccountVO> accountListYR = service.userAcocuntAllYR(id);
+		List<AccountVO> accountListJJ = service.userAcocuntAllJJ(id);
+		
 		request.setAttribute("accountList", accountList);
+		request.setAttribute("accountList_jyp", accountListJYP);
+		request.setAttribute("accountList_yr", accountListYR);
+		request.setAttribute("accountList_jj", accountListJJ);
 		
 		return "/jsp/account/accountList.jsp";
 	}

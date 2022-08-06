@@ -66,7 +66,7 @@ public class QnABoardDAO {
 	public List<QnABoardVO> boardList() {
 		List<QnABoardVO> boardList = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
-		sql.append("select no, title, content, writer, to_char(writing_time,'YYYY-MM-DD') as writing_time, id from qnaboard ");
+		sql.append("select no, title, content, writer, to_char(writing_time,'YYYY-MM-DD') as writing_time, id from qnaboard order by no desc ");
 		
 		try(
 				Connection conn = new ConnectionFactory().getConnection();
@@ -107,7 +107,7 @@ public class QnABoardDAO {
 	public QnABoardVO detailBoard(int no) {
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("select no, title, content, writer, to_char(writing_time,'YYYY-MM-DD') as writing_time, id  from qnaboard ");
+		sql.append("select no, title, content, writer, writing_time, id  from qnaboard ");
 		sql.append(" where no = ? ");
 		
 		try(

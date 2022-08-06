@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>HS_BANK</title>
+    <title>HS_bank_로그인</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -32,10 +32,9 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
 </head>
 <body>
+	
 	<header>
 	    <!-- Navbar Start -->
 	    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
@@ -52,7 +51,8 @@
 	                <c:if test="${ not empty loginVO }">
 		                <a href="${ pageContext.request.contextPath }/accountOpendForm.do" class="nav-item nav-link">계좌개설</a>
 		                <a href="${ pageContext.request.contextPath }/accountListProcess.do" class="nav-item nav-link">조회</a>
-		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
+		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>	                
+		                <a href="${ pageContext.request.contextPath }/openBankingForm.do" class="nav-item nav-link">오픈뱅킹</a>
 	                </c:if>
 	         
 	                <a href="${ pageContext.request.contextPath }/boardList.do" class="nav-item nav-link">Q&A</a>
@@ -68,96 +68,39 @@
 	    </nav>
 	    <!-- Navbar End -->
 	</header>
+	
+     <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="section-title text-center">
+                <h1 class="display-5 mb-5">계좌리스트</h1>
+            </div>
+            
+	            <div class="row g-4">
+	            
+		            <div class="section-title">
+	                <h4 class="display-6 mb-2"> 🤑 J_INVESTMENT_BANK</h4>
+	            	</div>
+	            
+			        
+			                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+			                    <div class="service-item">
+			                        <div class="overflow-hidden">
+			                            <img class="img-fluid" src="img/account.jpg" alt="">
+			                        </div>
+			                        <div class="p-4 text-center border border-5 border-light border-top-0">
+			                        <div id="service-item1"></div>
+			                        </div>
+		            				
+			                    </div>
+			                </div>
+		            
+	            </div>    
+    </div>
+    <!-- Service End -->
 
-	<section>
-	
-	<div class="container">
-		<div class="section-title text-center">
-        	<h1 class="display-5 mb-5">Q&A</h1>
-        </div>
-		<table class="table table-borderless table-sm">
-		<thead>
-		<tr>
-			<th scope="row" colspan="5" style="text-align: center;"><font size="5">
-			<c:out value="${ board.title }"/></font></th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr>
-			<td width="20%"></td>
-			<td width="20%"></td>
-			<td width="20%"></td>
-			<td style="text-align: right;"  width="20%">
-			<font size="2">
-			<c:out value="${ board.writer }"/>&nbsp;회원님
-			</font>
-			</td>
-			<td style="text-align: right;" width="20%">
-			<font size="2">
-			<c:out value="${ board.writingTime }"/>
-			</font>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="5" style="text-align: center;">
-			<font size="3">
-			<c:out value="${ board.content }"/> 
-			</font>
-			</td>
-		</tr>
-		</tbody>
-		</table>
-		
-		<!-- 답변 -->
-		<form action="${ pageContext.request.contextPath }/commentProcess.do?no=${ board.no }" method="post">
-		<input type="hidden" value="${ loginVO.name }" name="writer">
-		<input type="hidden" value="0" name="parentCommmentNo">
-		<div class="input-group btn-primary">
-	    	<input type="text" class="form-control" placeholder="답변을 등록하세요." 
-	    	aria-label="Input group example" aria-describedby="btnGroupAddon" name="content">
-	    	<button type="submit" class="input-group-text btn-primary" id="btnGroupAddon">↵</button>
-	  	</div>
-		</form>
-		<br>
-		<!-- 답변 리스트 -->
-		<c:forEach items="${ commentList }" var="comment" varStatus="loop">
-			<div style="margin-left:<c:out value="${40*comment.depth}"/>px">
-			<font size="3"><b>
-			😀&nbsp;↪ <c:out value="${ comment.writer }"/>&nbsp;회원님  
-			</b>
-			</font>
-				<br>
-				<font size="3">
-				&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${ comment.content }"/> 
-				</font>
-				
-				<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;
-				<span style="font-size: 13px;"><c:out value="${ comment.writingDate }"/></span>
-				<span class="toggleBtn" style="font-size: 13px;">답글달기</span>
-				
-				<div class="sub" style="display: none;">
-	                <div>
-	                   <form action="${ pageContext.request.contextPath }/commentProcess.do?no=${ board.no }" method="post">  
-	                      <input type="hidden" name="parentCommmentNo" value="${comment.commmentNo}"> 
-	                      <input type="hidden" name="writer" value="${ loginVO.name }"> 
-	                      <div class="input-group">
-		                      <input type="text" class="form-control" placeholder="답변을 등록하세요." 
-		    	aria-label="Input group example" aria-describedby="btnGroupAddon" name="content">
-		                      <button type="submit" class="input-group-text btn-primary" id="btnGroupAddon">↵</button>
-	                      </div>
-	                   </form>
-	                </div>
-	                
-	             </div>
-	             
-			</div>
-		<hr>
-		</c:forEach>	
-	</div>
-	
-	</section>
-	
+   
+
 	<footer>
 	    <!-- Footer Start -->
 	    <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -165,7 +108,7 @@
 	            <div class="copyright">
 	                <div class="row">
 	                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-	                        &copy; <a class="border-bottom" href="#">고객센터</a> &nbsp; 1234-9999
+	                        &copy; <a class="border-bottom" href="#">고객센터</a> &nbsp; 4121-0000
 	                    </div>
 	                    
 	                </div>
@@ -188,12 +131,49 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    
-    <script>
-     $('.toggleBtn').click(function(){
-        $(this).next(".sub").toggle(1000)
-     })
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$.ajax({
+				type:'get'
+				,url:'http://129.154.207.113:8080/openAPI/J_INVESTMENT_BANK'
+				,data:{
+					bankCode:"20"
+					,phoneNumber:"01010041004"
+					,tokenId:"z3i8i4v4j4a1"
+				},datetype:'jsonp'
+				,success:callback
+				,error:function(){
+					alert('오픈뱅킹 통신 오류');
+				}
+			})
+		})
+		
+		function callback(result){
+			console.log(result);
+			
+			$('#service-item1').empty();
+			
+			for(let i=0; i < result.length; i++){
+				let ajaxData = result[i];
+				let ajaxAccountNumber = ajaxData.accountNumber;
+				let ajaxAccountPassword = ajaxData.accountPassword;
+				let ajaxBalance = ajaxData.balance;
+				let ajaxBankAlias= ajaxData.bankAlias;
+				let ajaxBankCode = ajaxData.bankCode;
+				let ajaxBankName = ajaxData.bankName;
+				let ajaxBankRegDate = ajaxData.bankRegDate;
+				let ajaxPhoneNumber = ajaxData.phoneNumber;
+				let ajaxTransferLimit = ajaxData.transferLimit;
+		
+				$('#service-item1').append('<h4 class="mb-3">'+ajaxBankAlias+'</h4>');
+				$('#service-item1').append('<p><b>은행명: '+ajaxBankName+'</b></p>');
+				$('#service-item1').append('<p><b>계좌번호: '+ajaxAccountNumber+'</b></p>');
+				$('#service-item1').append('<p><b>잔액: '+ajaxBalance+'</b></p>');
+				
+				}
+		}
+		</script>
 </body>
-</body>
+
 </html>

@@ -53,14 +53,14 @@
 		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
 	                </c:if>
 	         
-	                <a href="#" class="nav-item nav-link">Q&A</a>
+	                <a href="${ pageContext.request.contextPath }/boardList.do" class="nav-item nav-link">Q&A</a>
 	                <a href="${ pageContext.request.contextPath }/teamForm.do" class="nav-item nav-link">team</a>
 	            </div>
 	            <c:if test="${ empty loginVO }">
 	            	<a href="${ pageContext.request.contextPath }/loginForm.do" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-arrow-right ms-3"></i></a>
 	            </c:if>
 	            <c:if test="${ not empty loginVO }">
-	            	<a href="${ pageContext.request.contextPath }/loginout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
+	            	<a href="${ pageContext.request.contextPath }/logout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
 	            </c:if>
 	        </div>
 	    </nav>
@@ -68,16 +68,60 @@
 	</header>
 	
 	<section>
-		<c:forEach items="${ userDealList }" var="userDeal" varStatus="loop">
-			<c:out value="${ userDeal.bankCode }"/>
-			<c:out value="${ userDeal.accountNumber }"/>
-			<c:out value="${ userDeal.dealAmount }"/>
-			<c:out value="${ userDeal.depositBankCode }"/>
-			<c:out value="${ userDeal.depositAccountNumber }"/>
-			<c:out value="${ userDeal.dealInfo }"/>
-			<c:out value="${ userDeal.dealDate }"/>
-			<br>
-		</c:forEach>
+	<div class="container">
+		<div class="section-title text-center">
+        	<h1 class="display-5 mb-5">거래내역</h1>
+        </div>
+		<table class="table table-hover">
+				<thead>
+				    <tr>
+				      <th scope="col">계좌번호</th>
+				      <th scope="col">거래금액</th>
+				      <th scope="col">상대방계좌번호</th>
+				      <th scope="col">거래정보</th>
+				      <th scope="col">거래일자</th>
+				    </tr>
+			  	</thead> 
+			  	<tbody>
+					<c:forEach items="${ userDealList }" var="userDeal" varStatus="loop">
+						<tr>
+						<%-- 
+						<td>
+						<c:out value="${ userDeal.bankCode }"/>
+						</td> 
+						--%>
+						<td>
+						<c:out value="${ userDeal.accountNumber }"/>
+						</td>
+						
+						<td>
+						<c:out value="${ userDeal.dealAmount }"/>
+						</td>
+						
+						<%-- 
+						<td>
+						<c:out value="${ userDeal.depositBankCode }"/>
+						</td>
+						 --%>
+						 
+						<td>
+						<c:out value="${ userDeal.depositAccountNumber }"/>
+						</td>
+						
+						<td>
+						<c:out value="${ userDeal.dealInfo }"/>
+						</td>
+						
+						<td>
+						<c:out value="${ userDeal.dealDate }"/>
+						</td>
+						
+						</tr>
+					</c:forEach>
+			  	</tbody>
+		</table>
+		
+	</div>
 	</section>
    
 	<footer>
@@ -111,5 +155,4 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
-
 </html>

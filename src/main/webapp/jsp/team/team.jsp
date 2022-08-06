@@ -55,14 +55,14 @@
 		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
 	                </c:if>
 	         
-	                <a href="#" class="nav-item nav-link">Q&A</a>
+	                <a href="${ pageContext.request.contextPath }/boardList.do" class="nav-item nav-link">Q&A</a>
 	                <a href="${ pageContext.request.contextPath }/teamForm.do" class="nav-item nav-link">team</a>
 	            </div>
 	            <c:if test="${ empty loginVO }">
 	            	<a href="${ pageContext.request.contextPath }/loginForm.do" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-arrow-right ms-3"></i></a>
 	            </c:if>
 	            <c:if test="${ not empty loginVO }">
-	            	<a href="${ pageContext.request.contextPath }/loginout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
+	            	<a href="${ pageContext.request.contextPath }/logout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
 	            </c:if>
 	        </div>
 	    </nav>

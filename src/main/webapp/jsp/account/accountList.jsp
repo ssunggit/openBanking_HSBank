@@ -34,10 +34,11 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+	
 	<header>
 	    <!-- Navbar Start -->
 	    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-	        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+	        <a href="${ pageContext.request.contextPath }/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
 	            <h2 class="m-0 text-primary">HS BANK</h2>
 	        </a>
 	        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -50,22 +51,24 @@
 	                <c:if test="${ not empty loginVO }">
 		                <a href="${ pageContext.request.contextPath }/accountOpendForm.do" class="nav-item nav-link">계좌개설</a>
 		                <a href="${ pageContext.request.contextPath }/accountListProcess.do" class="nav-item nav-link">조회</a>
-		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
-		                <a href="${ pageContext.request.contextPath }/accountTransferListForm.do" class="nav-item nav-link">이체내역</a>
+		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>		                
+		                <a href="${ pageContext.request.contextPath }/openBankingForm.do" class="nav-item nav-link">오픈뱅킹</a>
 	                </c:if>
 	         
-	                <a href="#" class="nav-item nav-link">Q&A</a>
+	                <a href="${ pageContext.request.contextPath }/boardList.do" class="nav-item nav-link">Q&A</a>
+	                <a href="${ pageContext.request.contextPath }/teamForm.do" class="nav-item nav-link">team</a>
 	            </div>
 	            <c:if test="${ empty loginVO }">
 	            	<a href="${ pageContext.request.contextPath }/loginForm.do" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-arrow-right ms-3"></i></a>
 	            </c:if>
 	            <c:if test="${ not empty loginVO }">
-	            	<a href="${ pageContext.request.contextPath }/loginout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
+	            	<a href="${ pageContext.request.contextPath }/logout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
 	            </c:if>
 	        </div>
 	    </nav>
 	    <!-- Navbar End -->
 	</header>
+	
      <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -74,6 +77,11 @@
             </div>
             
 	            <div class="row g-4">
+	            
+		            <div class="section-title">
+	                <h4 class="display-6 mb-2"> 🤑 HS BANK</h4>
+	            	</div>
+	            
 			        <c:forEach items="${ accountList }" var="account" varStatus="loop">
 			                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
 			                    <div class="service-item">
@@ -95,6 +103,103 @@
 			                </div>
 		            </c:forEach>
 	            </div>
+	            
+	            <br>
+	            <hr>
+	            <br>
+	            
+	            <div class="row g-4">
+	            
+	            	<div class="section-title">
+	                <h4 class="display-6 mb-2"> 🤑 JJ BANK</h4>
+	            	</div>
+		            
+		            <c:forEach items="${ accountList_jj }" var="account" varStatus="loop">
+			                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+			                    <div class="service-item">
+			                        <div class="overflow-hidden">
+			                            <img class="img-fluid" src="img/account.jpg" alt="">
+			                        </div>
+			                        
+		            				<form action="${ pageContext.request.contextPath }/accountTransferListForm.do" method="post">
+		            					<input type="hidden" value="${ account.accountNumber }" name="accountNumber">
+				                        <div class="p-4 text-center border border-5 border-light border-top-0">
+				                            <h4 class="mb-3"><c:out value="${ account.accountAlias }"/></h4>
+				                            <p><b>은행명: <c:out value="${ account.bankName }"/></b></p>
+				                            <p><b>계좌번호 : <c:out value="${ account.accountNumber }"/></b></p>
+				                            <p><b>잔액: <c:out value="${ account.balance }"/></b></p>
+				               				<button type="submit" class="btn btn-primary w-100 py-3" >거래내역<i class="fa fa-arrow-right ms-2"></i></button>		
+				                        </div>
+		            				</form>
+			                    </div>
+			                </div>
+		            </c:forEach>
+	            </div>
+	            
+	            <br>
+	            <hr>
+	            <br>
+	            
+	            <div class="row g-4">
+	            	<div class="section-title">
+	                <h4 class="display-6 mb-2"> 🤑 JYP BANK</h4>
+	            	</div>
+	            
+		            <c:forEach items="${ accountList_jyp }" var="account" varStatus="loop">
+			                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+			                    <div class="service-item">
+			                        <div class="overflow-hidden">
+			                            <img class="img-fluid" src="img/account.jpg" alt="">
+			                        </div>
+			                        
+		            				<form action="${ pageContext.request.contextPath }/accountTransferListForm.do" method="post">
+		            					<input type="hidden" value="${ account.accountNumber }" name="accountNumber">
+				                        <div class="p-4 text-center border border-5 border-light border-top-0">
+				                            <h4 class="mb-3"><c:out value="${ account.accountAlias }"/></h4>
+				                            <p><b>은행명: <c:out value="${ account.bankName }"/></b></p>
+				                            <p><b>계좌번호 : <c:out value="${ account.accountNumber }"/></b></p>
+				                            <p><b>잔액: <c:out value="${ account.balance }"/></b></p>
+				               				<button type="submit" class="btn btn-primary w-100 py-3" >거래내역<i class="fa fa-arrow-right ms-2"></i></button>		
+				                        </div>
+		            				</form>
+			                    </div>
+			                </div>
+		            </c:forEach>
+		        </div>
+		        
+		        <br>
+	            <hr>
+	            <br>
+		        
+	            <div class="row g-4">
+		            <div class="section-title">
+	                <h4 class="display-6 mb-2"> 🤑 YR BANK</h4>
+	            	</div>
+		            <c:forEach items="${ accountList_yr }" var="account" varStatus="loop">
+			                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+			                    <div class="service-item">
+			                        <div class="overflow-hidden">
+			                            <img class="img-fluid" src="img/account.jpg" alt="">
+			                        </div>
+			                        
+		            				<form action="${ pageContext.request.contextPath }/accountTransferListForm.do" method="post">
+		            					<input type="hidden" value="${ account.accountNumber }" name="accountNumber">
+				                        <div class="p-4 text-center border border-5 border-light border-top-0">
+				                            <h4 class="mb-3"><c:out value="${ account.accountAlias }"/></h4>
+				                            <p><b>은행명: <c:out value="${ account.bankName }"/></b></p>
+				                            <p><b>계좌번호 : <c:out value="${ account.accountNumber }"/></b></p>
+				                            <p><b>잔액: <c:out value="${ account.balance }"/></b></p>
+				               				<button type="submit" class="btn btn-primary w-100 py-3" >거래내역<i class="fa fa-arrow-right ms-2"></i></button>		
+				                        </div>
+		            				</form>
+			                    </div>
+			                </div>
+		            </c:forEach>
+		            
+	            </div>
+	            <br>
+	            <hr>
+	            <br>
         </div>
     </div>
     <!-- Service End -->

@@ -55,7 +55,7 @@
 	</script>
 </head>
 <body>
-<header>
+	<header>
 	    <!-- Navbar Start -->
 	    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
 	        <a href="${ pageContext.request.contextPath }/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -87,13 +87,10 @@
 	    </nav>
 	    <!-- Navbar End -->
 	</header>
-	
-	
 	<section>
 		<div class="container">
 			<div class="section-title text-center">
                 <h1 class="display-5 mb-5">Q&A</h1>
-            </div>
             
 			<table class="table table-hover">
 				<thead>
@@ -128,9 +125,12 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<c:if test="${ not empty loginVO }">
-				<button id="addBtn" onclick="writeForm()">새글등록</button>
-			</c:if>
+			
+				<c:if test="${ not empty loginVO }">
+					<button id="addBtn" onclick="writeForm()" class="btn btn-primary w-100 py-3">새글등록</button>
+				</c:if>
+			
+            </div>
 		</div>
 	</section>
 <footer>

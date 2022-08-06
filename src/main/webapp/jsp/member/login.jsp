@@ -54,14 +54,14 @@
 		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
 	                </c:if>
 	         
-	                <a href="#" class="nav-item nav-link">Q&A</a>
+	                <a href="${ pageContext.request.contextPath }/boardList.do" class="nav-item nav-link">Q&A</a>
 	                <a href="${ pageContext.request.contextPath }/teamForm.do" class="nav-item nav-link">team</a>
 	            </div>
 	            <c:if test="${ empty loginVO }">
 	            	<a href="${ pageContext.request.contextPath }/loginForm.do" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-arrow-right ms-3"></i></a>
 	            </c:if>
 	            <c:if test="${ not empty loginVO }">
-	            	<a href="${ pageContext.request.contextPath }/loginout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
+	            	<a href="${ pageContext.request.contextPath }/logout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
 	            </c:if>
 	        </div>
 	    </nav>
@@ -87,30 +87,38 @@
                         </p>
 						<form action="${ pageContext.request.contextPath }/loginProcess.do" method="post">
 						<div class="row g-3">
-						         <div class="col-12">
-						             <input type="text" name="id" class="form-control border-0" placeholder="아이디" style="height: 55px;">
-						         </div>
-						         <div class="col-12">
-						             <input type="password" name="password" class="form-control border-0" placeholder="비밀번호" style="height: 55px;">
-						         </div>
-						         <div class="col-12">
-						             <button class="btn btn-primary w-100 py-3" type="submit">로그인</button>
-						         </div>
-						         <div class="col-12">
-						         <img id="btn-kakao-login"  src="/OpenBanking_HS/img/KakaoTalk_Login.png" style="width:100%; height: 100%"/>
-						         </div>
-						         
-                			</div>
+					         <div class="col-12">
+					             <input type="text" name="id" class="form-control border-0" placeholder="아이디" style="height: 55px;">
+					         </div>
+					         <div class="col-12">
+					             <input type="password" name="password" class="form-control border-0" placeholder="비밀번호" style="height: 55px;">
+					         </div>
+					         <div class="col-12">
+					             <button class="btn btn-primary w-100 py-3" type="submit">로그인</button>
+					         </div>						         
+                		</div>
 						 </form>
+						 
 						 <form id="form-kakao-login" method="post" action="${ pageContext.request.contextPath }/kakaoLoginProcess.do">
 							<input type="hidden" name="email"/>
 							<input type="hidden" name="name"/>
 							<input type="hidden" name="img"/>
                    		</form>
                 		<br>
-						<div class="col-12">
-						     <button class="btn btn-primary w-100 py-3" onclick="location.href='${ pageContext.request.contextPath }/joinForm.do'">회원가입</button>
+                		<div class="row g-3">
+							<div class="col-12">
+							     <button class="btn btn-primary w-100 py-3" onclick="location.href='${ pageContext.request.contextPath }/joinForm.do'">회원가입</button>
+							</div>
+							
+							<div class="col-6">
+								<img id="btn-kakao-login"  src="/OpenBanking_HS/img/KakaoTalk_Login.png" style="width:100%; height: 100%"/>
+							</div>
+							
+							<div class="col-6">
+								<img id="btn-kakao-login"  src="/OpenBanking_HS/img/Naver_Login.png" style="width:100%; height: 100%"/>
+							</div>
 						</div>
+						
                 	</div>
                 </div>
             </div>

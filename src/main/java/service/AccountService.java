@@ -19,11 +19,6 @@ public class AccountService {
 		
 	}
 
-	public List<AccountVO> userAcocuntAll(String id) {
-		
-		List<AccountVO> accountList = accountDao.userAcocuntAll(id);
-		return accountList;
-	}
 
 	public void transfer(DealListVO dealList) {
 		accountDao.transfer(dealList);
@@ -37,6 +32,28 @@ public class AccountService {
 
 	public void transferOpenBanking(DealListVO dealList) {
 		accountDao.opentransfer(dealList);
+	}
+
+	public List<AccountVO> userAcocuntAll(String id) {
+		
+		List<AccountVO> accountList = accountDao.userAcocuntAll(id);
+		return accountList;
+	}
+	
+	public List<AccountVO> userAcocuntAllJYP(String id) {
+		List<AccountVO> accountList = accountDao.userAcocuntAllJYP(id);
+		return accountList;
+	}
+
+	public List<AccountVO> userAcocuntAllYR(String id) {
+		List<AccountVO> accountList = accountDao.userAcocuntAllYR(id);
+		return accountList;
+		
+	}
+
+	public List<AccountVO> userAcocuntAllJJ(String id) {
+		List<AccountVO> accountList = accountDao.userAcocuntAllJJ(id);
+		return accountList;
 	}
 	
 

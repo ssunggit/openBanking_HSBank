@@ -80,32 +80,46 @@
 		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
 	                </c:if>
 	         
-	                <a href="#" class="nav-item nav-link">Q&A</a>
+	                <a href="${ pageContext.request.contextPath }/boardList.do" class="nav-item nav-link">Q&A</a>
 	                <a href="${ pageContext.request.contextPath }/teamForm.do" class="nav-item nav-link">team</a>
 	            </div>
 	            <c:if test="${ empty loginVO }">
 	            	<a href="${ pageContext.request.contextPath }/loginForm.do" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-arrow-right ms-3"></i></a>
 	            </c:if>
 	            <c:if test="${ not empty loginVO }">
-	            	<a href="${ pageContext.request.contextPath }/loginout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
+	            	<a href="${ pageContext.request.contextPath }/logout.do" class="btn btn-primary py-4 px-lg-3 d-none d-lg-block">LOGOUT</a>
 	            </c:if>
 	        </div>
 	    </nav>
 	    <!-- Navbar End -->
 	</header>
-
 	<section>
-		<h2>새글 등록폼</h2>
+	<div class="container-xxl py-5">
+		<div class="section-title text-center">
+            <h1 class="display-5 mb-5">Q&A 작성</h1>
+            
 		<form action="${ pageContext.request.contextPath }/boardWrite.do" method="post" name="writeForm" onsubmit="return checkForm()">
-			<input type="text" name="title" size="80" placeholder="제목">
-		    <input type="text" name="writer" value="${ loginVO.name }"> 
-			<textarea rows="5" cols="80" name="content" placeholder="내용"></textarea>
-			<input type="submit" value="새글등록">
+			<table class="table table-borderless">
+			<tr>
+				<th scope="row">제목</th>
+				<td>
+					<input type="text" name="title" size="80" placeholder="문의 제목을 입력해주세요." class="form-control">
+				</td>
+		    </tr>
+		    
+		    <tr>
+		    	<th scope="row">내용</th>
+			    <td>
+					<textarea rows="5" cols="80" name="content" placeholder="문의 내용을 입력해주세요."  class="form-control"></textarea>
+				</td>
+			</tr>
+			</table>
+			
+		    <input type="hidden" name="writer" value="${ loginVO.name }"> 
+			<input type="submit" value="문의하기" class="btn btn-primary w-100 py-3 center">
 		</form>
-		
-		
-		
-		
+        </div>
+	</div>	
 	</section>
 
 	<footer>
@@ -141,4 +155,3 @@
 </body>
 
 </html>
-	

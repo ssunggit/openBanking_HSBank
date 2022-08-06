@@ -30,7 +30,7 @@ public class boardWriteController implements Controller {
 		QnABoardService service = new QnABoardService();
 		service.addBoard(qnaBoardVO);
 		
-		return "redirect:/";
+		return "redirect:/boardList.do";
 	}
 
 }
