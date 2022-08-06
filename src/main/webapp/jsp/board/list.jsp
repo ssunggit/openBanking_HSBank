@@ -72,6 +72,7 @@
 		                <a href="${ pageContext.request.contextPath }/accountOpendForm.do" class="nav-item nav-link">계좌개설</a>
 		                <a href="${ pageContext.request.contextPath }/accountListProcess.do" class="nav-item nav-link">조회</a>
 		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
+		                <a href="${ pageContext.request.contextPath }/openBankingForm.do" class="nav-item nav-link">오픈뱅킹</a>
 	                </c:if>
 	         
 	                <a href="${ pageContext.request.contextPath }/boardList.do" class="nav-item nav-link">Q&A</a>
@@ -87,6 +88,7 @@
 	    </nav>
 	    <!-- Navbar End -->
 	</header>
+	
 	<section>
 		<div class="container">
 			<div class="section-title text-center">

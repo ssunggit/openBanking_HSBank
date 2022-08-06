@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>HS_bank_로그인</title>
+    <title>HS_bank</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -34,8 +34,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-	
-	<header>
+<header>
 	    <!-- Navbar Start -->
 	    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
 	        <a href="${ pageContext.request.contextPath }/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -51,7 +50,7 @@
 	                <c:if test="${ not empty loginVO }">
 		                <a href="${ pageContext.request.contextPath }/accountOpendForm.do" class="nav-item nav-link">계좌개설</a>
 		                <a href="${ pageContext.request.contextPath }/accountListProcess.do" class="nav-item nav-link">조회</a>
-		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>	                
+		                <a href="${ pageContext.request.contextPath }/accountTransferForm.do" class="nav-item nav-link">이체</a>
 		                <a href="${ pageContext.request.contextPath }/openBankingForm.do" class="nav-item nav-link">오픈뱅킹</a>
 	                </c:if>
 	         
